@@ -9,7 +9,7 @@ class CardSwiperScreen extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 500,
-      color: AppTheme.primary,
+      color: AppTheme.secondary,
     );
   }
 }
