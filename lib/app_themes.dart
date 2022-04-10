@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static const Color primary = Colors.orange;
+  static const Color primary = Color.fromARGB(255, 184,20,28);
   static const Color secondary = Colors.blueGrey;
   static TextStyle title = const TextStyle(
     fontSize: 15,
