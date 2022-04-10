@@ -4,7 +4,7 @@ class AppTheme {
   static const Color primary = Color.fromARGB(255, 184, 20, 28);
   static const Color secondary = Colors.blueGrey;
   static const Color sliverColor = Color.fromARGB(120, 44, 41, 41);
-  static TextStyle title = const TextStyle(
+  static TextStyle listTitle = const TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.bold,
     color: Colors.black,
@@ -13,6 +13,18 @@ class AppTheme {
     fontSize: 15,
     fontWeight: FontWeight.bold,
     color: Colors.white,
+  );
+  static TextStyle movieTitle = const TextStyle(
+    fontSize: 25,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+    overflow: TextOverflow.ellipsis,
+  );
+  static TextStyle movieSubtitle = const TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+    overflow: TextOverflow.ellipsis,
   );
   static final ThemeData lightTheme = ThemeData.light().copyWith(
     //primary color: indigo
