@@ -14,7 +14,7 @@ class MovieSlider extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(left: 20, top: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
               'Popular Movies',
               style: AppTheme.title,
