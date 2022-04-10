@@ -9,9 +9,16 @@ class DetailsScreen extends StatelessWidget {
     //TODO: update to movie instance
     final String movie =
         ModalRoute.of(context)?.settings.arguments.toString() ?? 'no movie';
-    return const Scaffold(
+    return Scaffold(
         body: CustomScrollView(
-      slivers: [_CustomAppBar()],
+      slivers: [
+        const _CustomAppBar(),
+        SliverList(
+          delegate: SliverChildListDelegate(
+            <Widget>[const _PosterAndTitle()],
+          ),
+        ),
+      ],
     ));
   }
 }
@@ -40,9 +47,72 @@ class _CustomAppBar extends StatelessWidget {
         background: const FadeInImage(
           placeholder: AssetImage('assets/loading.gif'),
           image: NetworkImage(
-              'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2020/10/kimetsu-no-yaiba-movie-mugen-ressha-hen-2106843.jpg?itok=RjM5j4Xi'),
+            'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2020/10/kimetsu-no-yaiba-movie-mugen-ressha-hen-2106843.jpg?itok=RjM5j4Xi',
+          ),
           fit: BoxFit.cover,
         ),
+      ),
+    );
+  }
+}
+
+class _PosterAndTitle extends StatelessWidget {
+  const _PosterAndTitle({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: <Widget>[
+          ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: const FadeInImage(
+              placeholder: AssetImage('assets/loading.gif'),
+              image: NetworkImage(
+                'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2020/10/kimetsu-no-yaiba-movie-mugen-ressha-hen-2106843.jpg?itok=RjM5j4Xi',
+              ),
+              height: 150,
+            ),
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  'movie.title',
+                  style: AppTheme.movieTitle,
+                  maxLines: 2,
+                ),
+                Text(
+                  'movie.originalTitle',
+                  style: AppTheme.movieSubtitle,
+                  maxLines: 2,
+                ),
+                Row(
+                  children: <Widget>[
+                    const Icon(
+                      Icons.star_outline,
+                      size: 15,
+                      color: Colors.grey,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      'movie.voteAverage',
+                      style: Theme.of(context).textTheme.caption,
+                    )
+                  ],
+                )
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
