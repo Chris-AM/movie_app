@@ -17,7 +17,7 @@ class MovieSlider extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
               'Popular Movies',
-              style: AppTheme.title,
+              style: AppTheme.listTitle,
             ),
           ),
           const SizedBox(
