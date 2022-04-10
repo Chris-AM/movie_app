@@ -15,11 +15,23 @@ class CardSwiperScreen extends StatelessWidget {
         itemCount: 10,
         layout: SwiperLayout.STACK,
         itemWidth: size.width * 0.6,
-        itemHeight: size.height * 0.9,
+        itemHeight: size.height * 0.4,
         itemBuilder: (_, int index) {
-          return const FadeInImage(
-              placeholder: AssetImage('assets/loading.gif'),
-              image: NetworkImage('https://via.placeholder.com/350x150'));
+          return GestureDetector(
+            onTap: () => Navigator.pushNamed(
+              context,
+              'details',
+              arguments: 'movie-instance',
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: const FadeInImage(
+                placeholder: AssetImage('assets/loading.gif'),
+                image: NetworkImage('https://via.placeholder.com/300x400'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          );
         },
       ),
     );
