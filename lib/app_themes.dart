@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static const Color primary = Color.fromARGB(255, 184,20,28);
+  static const Color primary = Color.fromARGB(255, 184, 20, 28);
   static const Color secondary = Colors.blueGrey;
+  static const Color sliverColor = Color.fromARGB(120, 44, 41, 41);
   static TextStyle title = const TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.bold,
     color: Colors.black,
+  );
+  static TextStyle sliverTitle = const TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
   );
   static final ThemeData lightTheme = ThemeData.light().copyWith(
     //primary color: indigo
