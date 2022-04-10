@@ -15,7 +15,12 @@ class DetailsScreen extends StatelessWidget {
         const _CustomAppBar(),
         SliverList(
           delegate: SliverChildListDelegate(
-            <Widget>[const _PosterAndTitle()],
+            <Widget>[
+              const _PosterAndTitle(),
+              const _OverView(),
+              const _OverView(),
+              const _OverView(),
+            ],
           ),
         ),
       ],
@@ -113,6 +118,25 @@ class _PosterAndTitle extends StatelessWidget {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class _OverView extends StatelessWidget {
+  const _OverView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 10,
+      ),
+      child: Text(
+        'Deserunt est eiusmod excepteur deserunt et fugiat id irure aliquip non officia ullamco quis. Officia ipsum aute exercitation sit officia id Lorem sunt ullamco magna id.',
+        style: AppTheme.movieDetail,
+        textAlign: TextAlign.justify,
       ),
     );
   }
