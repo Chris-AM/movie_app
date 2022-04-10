@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/app_themes.dart';
+import 'package:movie_app/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class DetailsScreen extends StatelessWidget {
               const _OverView(),
               const _OverView(),
               const _OverView(),
+              const CastingCards()
             ],
           ),
         ),
