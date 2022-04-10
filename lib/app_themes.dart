@@ -26,6 +26,13 @@ class AppTheme {
     color: Colors.black,
     overflow: TextOverflow.ellipsis,
   );
+
+  static TextStyle movieDetail = const TextStyle(
+    fontSize: 15,
+    color: Colors.black,
+    
+  );
+
   static final ThemeData lightTheme = ThemeData.light().copyWith(
     //primary color: indigo
     primaryColor: primary,
