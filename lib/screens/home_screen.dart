@@ -28,7 +28,9 @@ class HomeScreen extends StatelessWidget {
                 movies: moviesProvider.nowPlayingMovies,
               ),
               // Movies Carrousel
-              const MovieSlider(),
+              MovieSlider(
+                  movies: moviesProvider.popularMovies,
+                  title: 'Popular Movies'),
             ],
           ),
         ));
