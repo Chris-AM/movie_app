@@ -30,9 +30,11 @@ class AppTheme {
   static TextStyle movieDetail = const TextStyle(
     fontSize: 15,
     color: Colors.black,
-    
   );
-
+  static TextStyle footer = const TextStyle(
+    fontSize: 15,
+    overflow: TextOverflow.ellipsis,
+  );
   static final ThemeData lightTheme = ThemeData.light().copyWith(
     //primary color: indigo
     primaryColor: primary,
