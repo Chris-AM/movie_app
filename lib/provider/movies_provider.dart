@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -9,6 +8,8 @@ class MoviesProvider extends ChangeNotifier {
   final String _baseUrl = 'api.themoviedb.org';
   final String _nowPlayingPath = '3/movie/now_playing';
   final String _language = 'en-US';
+
+  List<Movie> nowPlayingMovies = [];
 
   MoviesProvider() {
     getNowPlayingMovieFromDB();
@@ -25,6 +26,6 @@ class MoviesProvider extends ChangeNotifier {
     );
     final response = await http.get(url);
     final nowPlayingResponse = NowPlayingResponse.fromJson(response.body);
-    print('first movie got ===> ${nowPlayingResponse.results[0].title}');
+    nowPlayingMovies = nowPlayingResponse.results;
   }
 }
