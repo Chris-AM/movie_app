@@ -66,11 +66,11 @@ class _MoviePoster extends StatelessWidget {
           const SizedBox(
             height: 5,
           ),
-          const Flexible(
+          Flexible(
             child: Text(
-              'Quis ad sunt incididunt aliqua veniam quis dolor cupidatat.',
+              'movie.name',
               maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+              style: AppTheme.footer,
               textAlign: TextAlign.center,
             ),
           )
