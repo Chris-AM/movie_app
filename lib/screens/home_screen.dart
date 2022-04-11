@@ -10,7 +10,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final moviesProvider = Provider.of<MoviesProvider>(context);
-    print(moviesProvider.nowPlayingMovies);
     return Scaffold(
         appBar: AppBar(
           title: const Text('Now in cinemas'),
