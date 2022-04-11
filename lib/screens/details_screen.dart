@@ -50,6 +50,7 @@ class _CustomAppBar extends StatelessWidget {
             'movie.title',
             style: AppTheme.sliverTitle,
           ),
+          padding: const EdgeInsets.only(bottom: 10),
         ),
         background: const FadeInImage(
           placeholder: AssetImage('assets/loading.gif'),
@@ -61,7 +62,7 @@ class _CustomAppBar extends StatelessWidget {
       ),
     );
   }
-}
+} 
 
 class _PosterAndTitle extends StatelessWidget {
   const _PosterAndTitle({Key? key}) : super(key: key);
