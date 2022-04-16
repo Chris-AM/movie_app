@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/app_themes.dart';
+import 'package:movie_app/models/models.dart';
 import 'package:movie_app/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -8,8 +9,8 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //TODO: update to movie instance
-    final String movie =
-        ModalRoute.of(context)?.settings.arguments.toString() ?? 'no movie';
+    final Movie movie = ModalRoute.of(context)!.settings.arguments as Movie;
+    print(movie.title);
     return Scaffold(
         body: CustomScrollView(
       slivers: [
@@ -62,7 +63,7 @@ class _CustomAppBar extends StatelessWidget {
       ),
     );
   }
-} 
+}
 
 class _PosterAndTitle extends StatelessWidget {
   const _PosterAndTitle({Key? key}) : super(key: key);
