@@ -13,40 +13,40 @@ class MoviesProvider extends ChangeNotifier {
   List<Movie> nowPlayingMovies = [];
   List<Movie> popularMovies = [];
 
+  int _popularPage = 0;
+
   MoviesProvider() {
     getNowPlayingMovieFromDB();
     getPopularMoviesFromDB();
   }
-  getNowPlayingMovieFromDB() async {
+
+  Future<String> _getJsonData(String endpoint, [int page = 1]) async {
     var url = Uri.https(
       _baseUrl,
       _nowPlayingPath,
       {
         'api_key': _apiKey,
         'language': _language,
-        'page': '1',
+        'page': '$page',
       },
     );
     final response = await http.get(url);
-    final nowPlayingResponse = NowPlayingResponse.fromJson(response.body);
+    return response.body;
+  }
+
+  getNowPlayingMovieFromDB() async {
+    final jsonData = await _getJsonData(_nowPlayingPath);
+    final nowPlayingResponse = NowPlayingResponse.fromJson(jsonData);
     nowPlayingMovies = nowPlayingResponse.results;
     notifyListeners();
   }
 
   getPopularMoviesFromDB() async {
-    var url = Uri.https(
-      _baseUrl,
-      _popularPath,
-      {
-        'api_key': _apiKey,
-        'language': _language,
-        'page': '1',
-      },
-    );
-    final response = await http.get(url);
-    final popularResponse = PopularResponse.fromJson(response.body);
+    //increasing popular pages in infinite carrousel
+    _popularPage++;
+    final jsonData = await _getJsonData(_popularPath, _popularPage);
+    final popularResponse = PopularResponse.fromJson(jsonData);
     popularMovies = [...popularMovies, ...popularResponse.results];
-    print('first popular movies ===> ${popularMovies[0]}');
     notifyListeners();
   }
 }
