@@ -13,6 +13,8 @@ class AppTheme {
     fontSize: 15,
     fontWeight: FontWeight.bold,
     color: Colors.white,
+    overflow: TextOverflow.ellipsis,
+    
   );
   static TextStyle movieTitle = const TextStyle(
     fontSize: 25,
