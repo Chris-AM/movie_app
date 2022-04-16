@@ -40,6 +40,13 @@ class Movie {
     if (posterPath != null) return _imgUrl;
     return noImg;
   }
+  get fullBackDropPathImg {
+    var _imgUrl = 'https://image.tmdb.org/t/p/w500${backdropPath}';
+    var noImg =
+        'https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483097.jpg';
+    if (posterPath != null) return _imgUrl;
+    return noImg;
+  }
 
   factory Movie.fromJson(String str) => Movie.fromMap(json.decode(str));
 
