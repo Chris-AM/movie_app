@@ -35,16 +35,19 @@ class Movie {
 
   get fullPosterImg {
     var _imgUrl = 'https://image.tmdb.org/t/p/w500${posterPath}';
+    print(_imgUrl);
     var noImg =
-        'https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483097.jpg';
+        'http://www.newdesignfile.com/postpic/2015/02/funny-no-image-available-icon_68017.jpg';
     if (posterPath != null) return _imgUrl;
     return noImg;
   }
+
   get fullBackDropPathImg {
     var _imgUrl = 'https://image.tmdb.org/t/p/w500${backdropPath}';
+    print('backdrop ===> $_imgUrl');
     var noImg =
-        'https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483097.jpg';
-    if (posterPath != null) return _imgUrl;
+        'http://www.newdesignfile.com/postpic/2015/02/funny-no-image-available-icon_68017.jpg';
+    if (backdropPath != null) return _imgUrl;
     return noImg;
   }
 
