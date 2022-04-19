@@ -1,26 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/app_themes.dart';
+import 'package:movie_app/models/models.dart';
+import 'package:movie_app/provider/movies_provider.dart';
+import 'package:provider/provider.dart';
 
 class CastingCards extends StatelessWidget {
-  const CastingCards({Key? key}) : super(key: key);
+  final int movieId;
+  const CastingCards({
+    Key? key,
+    required this.movieId,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 30),
-      width: double.infinity,
-      height: 180,
-      child: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (_, int index) => const _CastCards(),
-        scrollDirection: Axis.horizontal,
-      ),
+    final moviesProvider = Provider.of<MoviesProvider>(context, listen: false);
+    return FutureBuilder(
+      future: moviesProvider.getMovieCast(movieId),
+      builder: (_, AsyncSnapshot<List<Cast>> snapshot) {
+        if (!snapshot.hasData) {
+          return Container(
+            height: 180,
+            child: const Center(child: CircularProgressIndicator()),
+          );
+        }
+        final List<Cast> cast = snapshot.data!;
+        return Container(
+          margin: const EdgeInsets.only(bottom: 30),
+          width: double.infinity,
+          height: 180,
+          child: ListView.builder(
+            itemCount: 10,
+            itemBuilder: (_, int index) =>  _CastCards( cast: cast[index]),
+            scrollDirection: Axis.horizontal,
+          ),
+        );
+      },
     );
   }
 }
 
 class _CastCards extends StatelessWidget {
-  const _CastCards({Key? key}) : super(key: key);
+  final Cast cast;
+  const _CastCards({
+    Key? key,
+    required this.cast,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +56,10 @@ class _CastCards extends StatelessWidget {
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: const FadeInImage(
-              placeholder: AssetImage('assets/loading.gif'),
+            child: FadeInImage(
+              placeholder: const AssetImage('assets/loading.gif'),
               image: NetworkImage(
-                'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2020/10/kimetsu-no-yaiba-movie-mugen-ressha-hen-2106843.jpg?itok=RjM5j4Xi',
+                cast.fullProfileImg,
               ),
               fit: BoxFit.cover,
               height: 140,
@@ -43,7 +67,7 @@ class _CastCards extends StatelessWidget {
             ),
           ),
           Text(
-            'actor.name',
+            cast.name,
             maxLines: 2,
             style: AppTheme.footer,
             textAlign: TextAlign.center,

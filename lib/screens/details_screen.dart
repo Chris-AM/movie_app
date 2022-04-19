@@ -31,7 +31,9 @@ class DetailsScreen extends StatelessWidget {
               const SizedBox(
                 height: 40,
               ),
-              const CastingCards()
+              CastingCards(
+                movieId: movie.id,
+              )
             ],
           ),
         ),
