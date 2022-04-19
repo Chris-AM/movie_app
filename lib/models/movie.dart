@@ -34,8 +34,7 @@ class Movie {
   int voteCount;
 
   get fullPosterImg {
-    var _imgUrl = 'https://image.tmdb.org/t/p/w500${posterPath}';
-    print(_imgUrl);
+    var _imgUrl = 'https://image.tmdb.org/t/p/w500$posterPath';
     var noImg =
         'http://www.newdesignfile.com/postpic/2015/02/funny-no-image-available-icon_68017.jpg';
     if (posterPath != null) return _imgUrl;
@@ -43,8 +42,7 @@ class Movie {
   }
 
   get fullBackDropPathImg {
-    var _imgUrl = 'https://image.tmdb.org/t/p/w500${backdropPath}';
-    print('backdrop ===> $_imgUrl');
+    var _imgUrl = 'https://image.tmdb.org/t/p/w500$backdropPath';
     var noImg =
         'http://www.newdesignfile.com/postpic/2015/02/funny-no-image-available-icon_68017.jpg';
     if (backdropPath != null) return _imgUrl;
