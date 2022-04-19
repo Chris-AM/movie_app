@@ -64,12 +64,10 @@ class _CustomAppBar extends StatelessWidget {
           color: AppTheme.sliverColor,
           width: double.infinity,
           alignment: Alignment.bottomCenter,
-          child: Flexible(
-            child: Text(
-              movieTitle,
-              style: AppTheme.sliverTitle,
-              maxLines: 2,
-            ),
+          child: Text(
+            movieTitle,
+            style: AppTheme.sliverTitle,
+            maxLines: 2,
           ),
           padding: const EdgeInsets.only(bottom: 10),
         ),

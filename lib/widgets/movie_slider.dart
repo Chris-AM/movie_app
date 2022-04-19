@@ -101,13 +101,11 @@ class _MoviePoster extends StatelessWidget {
           const SizedBox(
             height: 5,
           ),
-          Flexible(
-            child: Text(
-              movie.title,
-              maxLines: 2,
-              style: AppTheme.footer,
-              textAlign: TextAlign.center,
-            ),
+          Text(
+            movie.title,
+            maxLines: 2,
+            style: AppTheme.footer,
+            textAlign: TextAlign.center,
           )
         ],
       ),
