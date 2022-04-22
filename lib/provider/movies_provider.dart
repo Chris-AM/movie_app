@@ -8,6 +8,7 @@ class MoviesProvider extends ChangeNotifier {
   final String _baseUrl = 'api.themoviedb.org';
   final String _nowPlayingPath = '3/movie/now_playing';
   final String _popularPath = '3/movie/popular';
+  final String _searchPath = '3/search/movie';
   final String _language = 'en-US';
 
   List<Movie> nowPlayingMovies = [];
@@ -23,7 +24,7 @@ class MoviesProvider extends ChangeNotifier {
   }
 
   Future<String> _getJsonData(String endpoint, [int page = 1]) async {
-    var url = Uri.https(
+    final url = Uri.https(
       _baseUrl,
       endpoint,
       {
@@ -58,5 +59,17 @@ class MoviesProvider extends ChangeNotifier {
     final creaditsResponse = CreditsResponse.fromJson(jsonData);
     movieCasts[movieId] = creaditsResponse.cast;
     return creaditsResponse.cast;
+  }
+
+  Future<List<Movie>> searchMovies(String query) async {
+    final url = Uri.https(
+      _baseUrl,
+      _searchPath,
+      {'api_key': _apiKey, 'language': _language, 'query': query},
+    );
+
+    final response = await http.get(url);
+    final searchResponse = SearchResponse.fromJson(response.body);
+    return searchResponse.results;
   }
 }
