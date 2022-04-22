@@ -24,6 +24,7 @@ class DetailsScreen extends StatelessWidget {
                 poster: movie.fullPosterImg,
                 title: movie.title,
                 votes: movie.voteAverage,
+                id: movie.heroId!,
               ),
               _OverView(
                 description: movie.overview,
@@ -88,14 +89,16 @@ class _PosterAndTitle extends StatelessWidget {
   final dynamic poster;
   final String originalTitle;
   final double votes;
+  final String id;
 
-  const _PosterAndTitle({
-    Key? key,
-    required this.title,
-    required this.poster,
-    required this.originalTitle,
-    required this.votes,
-  }) : super(key: key);
+  const _PosterAndTitle(
+      {Key? key,
+      required this.title,
+      required this.poster,
+      required this.originalTitle,
+      required this.votes,
+      required this.id})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -104,14 +107,17 @@ class _PosterAndTitle extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.circular(30),
-            child: FadeInImage(
-              placeholder: const AssetImage('assets/loading.gif'),
-              image: NetworkImage(
-                poster,
+          Hero(
+            tag: id,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30),
+              child: FadeInImage(
+                placeholder: const AssetImage('assets/loading.gif'),
+                image: NetworkImage(
+                  poster,
+                ),
+                height: 150,
               ),
-              height: 150,
             ),
           ),
           const SizedBox(

@@ -16,6 +16,7 @@ class Movie {
     required this.video,
     required this.voteAverage,
     required this.voteCount,
+
   });
 
   bool adult;
@@ -32,6 +33,7 @@ class Movie {
   bool video;
   double voteAverage;
   int voteCount;
+  String? heroId;
 
   get fullPosterImg {
     var _imgUrl = 'https://image.tmdb.org/t/p/w500$posterPath';
