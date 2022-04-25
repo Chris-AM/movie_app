@@ -31,7 +31,6 @@ class MovieSearchDelegate extends SearchDelegate {
     if (query.isEmpty) {
       return _emptyContainer();
     }
-
     final moviesProvider = Provider.of<MoviesProvider>(context, listen: false);
 
     return FutureBuilder(
@@ -51,7 +50,25 @@ class MovieSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return _emptyContainer();
+    if (query.isEmpty) {
+      return _emptyContainer();
+    }
+
+    final moviesProvider = Provider.of<MoviesProvider>(context, listen: false);
+    moviesProvider.getResultsByQuery(query);
+    return StreamBuilder(
+      stream: moviesProvider.movieResults,
+      builder: (_, AsyncSnapshot<List<Movie>> snapshot) {
+        if (!snapshot.hasData) return _emptyContainer();
+        final movies = snapshot.data;
+        return ListView.builder(
+          itemCount: movies!.length,
+          itemBuilder: (_, int index) => _MovieItem(
+            movie: movies[index],
+          ),
+        );
+      },
+    );
   }
 
   Widget _emptyContainer() {
