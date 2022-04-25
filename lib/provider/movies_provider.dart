@@ -27,10 +27,10 @@ class MoviesProvider extends ChangeNotifier {
     ),
   );
 
-  final StreamController<List<Movie>> _resultsStramController =
+  final StreamController<List<Movie>> _suggestuionsStreamController =
       StreamController.broadcast();
 
-  Stream<List<Movie>> get movieResults => _resultsStramController.stream;
+  Stream<List<Movie>> get movieSuggestions => _suggestuionsStreamController.stream;
 
   MoviesProvider() {
     getNowPlayingMovieFromDB();
@@ -90,8 +90,8 @@ class MoviesProvider extends ChangeNotifier {
   void getResultsByQuery(String searchTerm) {
     debouncer.value = '';
     debouncer.onValue = (value) async {
-      final results = await searchMovies(value);
-      _resultsStramController.add(results);
+      final suggestions = await searchMovies(value);
+      _suggestuionsStreamController.add(suggestions);
     };
     final timer = Timer.periodic(const Duration(milliseconds: 300), (_) {
       debouncer.value = searchTerm;
